@@ -1,0 +1,30 @@
+
+services:
+  mysql-k8s:
+    image: mysql:8.0-debian
+    container_name: mysql-k8s
+    restart: always
+    env_file: .env
+    environment:
+      - MYSQL_DATABASE=wordpress
+      - MYSQL_ROOT_PASSWORD=$MYSQL_ROOT_PASSWORD
+      - MYSQL_USER=$MYSQL_USER
+      - MYSQL_PASSWORD=$MYSQL_PASSWORD
+
+    volumes:
+      - mysql-k8s-data:/var/lib/mysql
+    command: '--default-authentication-plugin=mysql_native_password'
+    networks:
+      - network-mysql-k8s
+    ports:
+      - "3306:3306"
+
+
+volumes:
+  mysql-k8s-data:
+
+
+networks:
+  network-mysql-k8s:
+    name: network-mysql-k8s
+    driver: bridge
