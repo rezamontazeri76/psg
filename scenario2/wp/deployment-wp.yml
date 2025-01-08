@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: wordpress
-          image: wordpress:6.7.1-php8.2
+          image: wordpress:php8.3-apache
           
           ports:
             - containerPort: 80
@@ -32,8 +32,8 @@ spec:
             - name: WORDPRESS_DB_USER
               value: wpuser
             - name: WORDPRESS_DB_NAME
-              value: wordpress
-
+              value: wordpress                   
+                          
           resources:
             limits:
               memory: 2048Mi
