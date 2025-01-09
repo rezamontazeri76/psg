@@ -13,4 +13,10 @@ nodes:
     listenAddress: "0.0.0.0"
     protocol: TCP
 - role: worker
+  extraMounts:
+    - hostPath: /host/nfs-data
+      containerPath: /data/nfs
 - role: worker
+  extraMounts:
+    - hostPath: /host/nfs-data
+      containerPath: /data/nfs
